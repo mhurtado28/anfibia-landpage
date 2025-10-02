@@ -13,7 +13,7 @@
     <header class="header">
         <nav class="nav">
             <div class="nav-brand">
-                <h2>Anfibia</h2>
+                <img src="LOGO_ANFIBIA.png" alt="Anfibia" class="nav-logo">
             </div>
             <ul class="nav-menu">
                 <li><a href="#inicio">Inicio</a></li>
@@ -33,8 +33,7 @@
     <section id="inicio" class="hero">
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="highlight">CONECTAMOS</span><br>
-                TECNOLOGÍA Y AMBIENTE
+                <span class="highlight">CONECTAMOS</span> TECNOLOGÍA Y AMBIENTE
             </h1>
             <p class="hero-subtitle">
                 Desarrollamos software inteligente para solucionar desafíos ambientales y crear un futuro sostenible.
@@ -46,9 +45,64 @@
         </div>
         <div class="hero-visual">
             <div class="floating-elements">
-                <div class="element element-1"></div>
-                <div class="element element-2"></div>
-                <div class="element element-3"></div>
+                <svg class="neural-network" viewBox="0 0 600 600">
+                    <!-- Árbol profesional: Tronco abajo, ramas arriba -->
+                    <g class="tree-base">
+                        <!-- Tronco principal (abajo, grueso) -->
+                        <path class="branch-base trunk" d="M 300 550 Q 298 480, 300 410 Q 302 360, 300 310" />
+                        
+                        <!-- Ramas principales desde el tronco hacia arriba -->
+                        <path class="branch-base main" d="M 300 310 Q 250 270, 200 230 Q 170 205, 140 180" />
+                        <path class="branch-base main" d="M 300 310 Q 350 270, 400 230 Q 430 205, 460 180" />
+                        <path class="branch-base main" d="M 300 310 Q 280 260, 260 210 Q 250 180, 240 150" />
+                        <path class="branch-base main" d="M 300 310 Q 320 260, 340 210 Q 350 180, 360 150" />
+                        
+                        <!-- Ramificaciones secundarias -->
+                        <path class="branch-base" d="M 200 230 Q 170 210, 140 190 Q 120 175, 100 160" />
+                        <path class="branch-base" d="M 200 230 Q 190 195, 180 160 Q 175 140, 170 120" />
+                        <path class="branch-base" d="M 140 180 Q 120 160, 100 140 Q 90 125, 80 110" />
+                        
+                        <path class="branch-base" d="M 400 230 Q 430 210, 460 190 Q 480 175, 500 160" />
+                        <path class="branch-base" d="M 400 230 Q 410 195, 420 160 Q 425 140, 430 120" />
+                        <path class="branch-base" d="M 460 180 Q 480 160, 500 140 Q 510 125, 520 110" />
+                        
+                        <path class="branch-base" d="M 260 210 Q 240 180, 220 150 Q 210 130, 200 110" />
+                        <path class="branch-base" d="M 340 210 Q 360 180, 380 150 Q 390 130, 400 110" />
+                    </g>
+                    
+                    <!-- Flujo de energía (sube por el árbol) -->
+                    <g class="energy-flow">
+                        <path class="flow trunk" d="M 300 550 Q 298 480, 300 410 Q 302 360, 300 310" />
+                        <path class="flow main" d="M 300 310 Q 250 270, 200 230 Q 170 205, 140 180" />
+                        <path class="flow main" d="M 300 310 Q 350 270, 400 230 Q 430 205, 460 180" />
+                        <path class="flow main" d="M 300 310 Q 280 260, 260 210 Q 250 180, 240 150" />
+                        <path class="flow main" d="M 300 310 Q 320 260, 340 210 Q 350 180, 360 150" />
+                        <path class="flow" d="M 200 230 Q 170 210, 140 190 Q 120 175, 100 160" />
+                        <path class="flow" d="M 200 230 Q 190 195, 180 160 Q 175 140, 170 120" />
+                        <path class="flow" d="M 140 180 Q 120 160, 100 140 Q 90 125, 80 110" />
+                        <path class="flow" d="M 400 230 Q 430 210, 460 190 Q 480 175, 500 160" />
+                        <path class="flow" d="M 400 230 Q 410 195, 420 160 Q 425 140, 430 120" />
+                        <path class="flow" d="M 460 180 Q 480 160, 500 140 Q 510 125, 520 110" />
+                        <path class="flow" d="M 260 210 Q 240 180, 220 150 Q 210 130, 200 110" />
+                        <path class="flow" d="M 340 210 Q 360 180, 380 150 Q 390 130, 400 110" />
+                    </g>
+                    
+                    <!-- Nodos profesionales (más grandes, sin cruzar líneas) -->
+                    <circle class="node primary" cx="300" cy="550" r="18" />
+                    <circle class="node large" cx="300" cy="310" r="20" />
+                    <circle class="node medium" cx="200" cy="230" r="14" />
+                    <circle class="node medium" cx="400" cy="230" r="14" />
+                    <circle class="node medium" cx="260" cy="210" r="14" />
+                    <circle class="node medium" cx="340" cy="210" r="14" />
+                    <circle class="node" cx="140" cy="180" r="12" />
+                    <circle class="node" cx="460" cy="180" r="12" />
+                    <circle class="node" cx="240" cy="150" r="11" />
+                    <circle class="node" cx="360" cy="150" r="11" />
+                    <circle class="node small" cx="100" cy="160" r="9" />
+                    <circle class="node small" cx="500" cy="160" r="9" />
+                    <circle class="node small" cx="180" cy="160" r="9" />
+                    <circle class="node small" cx="420" cy="160" r="9" />
+                </svg>
             </div>
         </div>
     </section>
@@ -57,6 +111,7 @@
     <section id="servicios" class="services">
         <div class="container">
             <div class="section-header">
+                <img src="LOGO_ia.png" alt="IA" class="services-logo">
                 <h2>NUESTROS SERVICIOS</h2>
                 <p>Soluciones tecnológicas para un mundo más sostenible</p>
             </div>
@@ -67,29 +122,14 @@
                     <div class="service-icon">
                         <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Inteligencia Artificial</h3>
-                    <p>Modelos predictivos y de detección para análisis ambiental avanzado</p>
+                    <h3>INTELIGENCIA ARTIFICIAL</h3>
+                    <p>Soluciones de IA especializadas para el análisis y monitoreo ambiental</p>
                     <ul>
-                        <li>Modelos predictivos</li>
-                        <li>Detección de imágenes</li>
-                        <li>Clasificación de objetos/animales/áreas</li>
-                        <li>Clasificación de sonidos</li>
-                        <li>Lenguaje natural ambiental</li>
-                    </ul>
-                </div>
-
-                <!-- Desarrollo de Software -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Desarrollo de Software</h3>
-                    <p>Soluciones personalizadas para proyectos ambientales</p>
-                    <ul>
-                        <li>Desarrollo en Python</li>
-                        <li>Desarrollo web React/WordPress</li>
-                        <li>Visores interactivos</li>
-                        <li>Landing pages</li>
+                        <li>Predecir variables ambientales</li>
+                        <li>Detección y reconocimiento de especies de animales, plantas u objetos</li>
+                        <li>Chatbot con información de interés ambiental</li>
+                        <li>Detección e identificación de sonidos</li>
+                        <li>Construcción y manejo de base de datos ambientales</li>
                     </ul>
                 </div>
 
@@ -98,13 +138,12 @@
                     <div class="service-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Green Business Intelligence</h3>
-                    <p>Análisis de datos ambientales para decisiones sostenibles</p>
+                    <h3>DATOS Y SOSTENIBILIDAD EMPRESARIAL</h3>
+                    <p>Análisis y medición de datos verdes de tu empresa con estrategias de sostenibilidad globales</p>
                     <ul>
-                        <li>Medición de impacto ambiental</li>
-                        <li>Visualización de datos verdes</li>
-                        <li>Optimización sostenible</li>
-                        <li>Reportes ambientales</li>
+                        <li>Evaluacion ciclo de vida (ISO 14040)</li>
+                        <li>Visualizacion de datos verdes (Dashboards)</li>
+                        <li>Declaraciones ambientales de producto (DAP) (ISO 14025)</li>
                     </ul>
                 </div>
 
@@ -113,13 +152,12 @@
                     <div class="service-icon">
                         <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <h3>SIG y Análisis Espacial</h3>
-                    <p>Geolocalización y análisis territorial para proyectos ambientales</p>
+                    <h3>SIG y SOFTWARE</h3>
+                    <p>Análisis espacial y desarrollo de herramientas geoespaciales</p>
                     <ul>
                         <li>Análisis espacial</li>
-                        <li>Cartografía digital</li>
-                        <li>Modelos 3D ambientales</li>
-                        <li>Monitoreo territorial</li>
+                        <li>Diseño de mapas personalizados para mostrar información ambiental</li>
+                        <li>Geovisores Personalizados</li>
                     </ul>
                 </div>
 
@@ -128,13 +166,12 @@
                     <div class="service-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3>Capacitación</h3>
-                    <p>Formación especializada en tecnologías ambientales</p>
+                    <h3>CAPACITACIONES</h3>
+                    <p>Formación especializada en tecnologías ambientales y sostenibilidad</p>
                     <ul>
-                        <li>Workshops personalizados</li>
-                        <li>Certificaciones ambientales</li>
-                        <li>Capacitación en herramientas</li>
-                        <li>Mentoría especializada</li>
+                        <li>Capacitaciones en Sostenibilidad ambiental</li>
+                        <li>Capacitaciones en Machine Learning aplicado al medio ambiente y las ciencias naturales</li>
+                        <li>Capacitaciones en SIG</li>
                     </ul>
                 </div>
             </div>
@@ -146,24 +183,29 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>SOMOS ANFIBIA</h2>
-                    <p class="about-description">
-                        Trabajamos para conectar la tecnología y el software con el conocimiento ambiental. 
+                    <h2>SOMOS ANFIB<span class="highlight-ia">IA</span></h2>
+                    <p class="about-description"> 
                         Somos una empresa innovadora que desarrolla soluciones digitales para abordar los 
-                        desafíos más urgentes de nuestro planeta.
+                        desafíos más urgentes de nuestro planeta, conectando la tecnología y el software con el conocimiento ambiental.
                     </p>
                     
                     <div class="mission-vision">
                         <div class="mission">
                             <h3>Misión</h3>
-                            <p>Crear tecnología que permita a organizaciones y comunidades tomar decisiones 
-                            informadas para la conservación y gestión sostenible de los recursos naturales.</p>
+                            <p>Desarrollar tecnología científica y soluciones inteligentes que respondan 
+                                a los retos ambientales del presente y del futuro. Trabajar junto a organizaciones, 
+                                comunidades y centros de investigación para crear herramientas sostenibles, basadas 
+                                en evidencia, que impulsen la gestión ambiental, la conservación de los recursos naturales 
+                                y la toma de decisiones informadas desde la ciencia y la innovación.</p>
                         </div>
                         
                         <div class="vision">
                             <h3>Visión</h3>
-                            <p>Ser líderes en el desarrollo de software ambiental, contribuyendo a un mundo 
-                            donde la tecnología y la sostenibilidad trabajen en armonía.</p>
+                            <p>Ser una empresa líder en investigación e innovación ambiental desde América Latina, 
+                                impulsando el desarrollo de software científico e inteligencia artificial aplicada 
+                                a la comprensión, gestión y protección del planeta y sus ecosistemas. Posicionarnos como un 
+                                referente global en la creación de tecnologías profundas que generen soluciones reales e impacto 
+                                positivo frente a los retos ambientales que enfrenta nuestra sociedad.</p>
                         </div>
                     </div>
 
@@ -191,18 +233,20 @@
                 </div>
                 
                 <div class="about-visual">
-                    <div class="eco-stats">
-                        <div class="stat-item">
-                            <h4>100+</h4>
-                            <p>Proyectos Ambientales</p>
+                    <div class="eco-illustration">
+                        <div class="illustration-circle main-circle">
+                            <i class="fas fa-leaf"></i>
                         </div>
-                        <div class="stat-item">
-                            <h4>50+</h4>
-                            <p>Clientes Satisfechos</p>
-                        </div>
-                        <div class="stat-item">
-                            <h4>95%</h4>
-                            <p>Reducción de Impacto</p>
+                        <div class="orbit-container">
+                            <div class="illustration-circle small-circle circle-1">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="illustration-circle small-circle circle-2">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div class="illustration-circle small-circle circle-3">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -223,7 +267,7 @@
                     <h3>Información de Contacto</h3>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <span>mhurtaddo2800@gmail.com</span>
+                        <span>anfibiacoldev@gmail.com</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
@@ -256,10 +300,9 @@
                             <select id="servicio" name="servicio" required>
                                 <option value="">Selecciona un servicio</option>
                                 <option value="ia">Inteligencia Artificial</option>
-                                <option value="desarrollo">Desarrollo de Software</option>
                                 <option value="gbi">Green Business Intelligence</option>
-                                <option value="sig">SIG y Análisis Espacial</option>
-                                <option value="capacitacion">Capacitación</option>
+                                <option value="sig">SIG y Software</option>
+                                <option value="capacitacion">Capacitaciones</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -277,7 +320,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>Anfibia</h3>
+                    <img src="LOGO_ANFIBIA.png" alt="Anfibia" class="footer-logo">
                     <p>Conectando tecnología y ambiente para un futuro sostenible</p>
                 </div>
                 <div class="footer-links">
@@ -285,9 +328,9 @@
                         <h4>Servicios</h4>
                         <ul>
                             <li><a href="#servicios">Inteligencia Artificial</a></li>
-                            <li><a href="#servicios">Desarrollo de Software</a></li>
-                            <li><a href="#servicios">Green BI</a></li>
-                            <li><a href="#servicios">SIG</a></li>
+                            <li><a href="#servicios">Green Business Intelligence</a></li>
+                            <li><a href="#servicios">SIG y Software</a></li>
+                            <li><a href="#servicios">Capacitaciones</a></li>
                         </ul>
                     </div>
                     <div class="footer-section">

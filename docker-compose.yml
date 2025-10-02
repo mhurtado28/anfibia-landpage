@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  anfibia-landing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: anfibia-landing-page
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    volumes:
+      # Volumen para logs persistentes
+      - nginx-logs:/var/log/nginx
+      # Volumen para configuración personalizada (opcional)
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - anfibia-network
+    labels:
+      - "com.anfibia.description=Landing page de Anfibia"
+      - "com.anfibia.version=1.0.0"
+      - "com.anfibia.maintainer=info@anfibia.com"
+
+  # Servicio opcional para desarrollo local
+  anfibia-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: anfibia-landing-dev
+    ports:
+      - "3000:80"
+    volumes:
+      # Montar archivos para desarrollo en tiempo real
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./styles.css:/usr/share/nginx/html/styles.css:ro
+      - ./script.js:/usr/share/nginx/html/script.js:ro
+    environment:
+      - NGINX_ENV=development
+    restart: unless-stopped
+    profiles:
+      - dev
+
+volumes:
+  nginx-logs:
+    driver: local
+
+networks:
+  anfibia-network:
+    driver: bridge
+    name: anfibia-network

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Anfibia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset y configuración base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2ecc71;
+            --primary-dark: #27ae60;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+            --text-light: #718096;
+            --bg-light: #f7fafc;
+            --border-color: #e2e8f0;
+            --accent-color: #38b2ac;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #ffffff;
+            padding: 60px 80px;
+            max-width: 210mm;
+            margin: 0 auto;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Estilos de impresión */
+        @media print {
+            body {
+                padding: 40px;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+
+            @page {
+                margin: 1.5cm;
+            }
+        }
+
+        /* Header del portafolio */
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 30px;
+        }
+
+        .portfolio-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        .portfolio-header h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 52px;
+            color: #1a5f3a;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 0px;
+        }
+
+        .portfolio-header .highlight-ia {
+            color: var(--primary-color);
+        }
+
+        .portfolio-header .tagline {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-top: 12px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        /* Secciones */
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .section-content {
+            padding-left: 0;
+        }
+
+        /* About/Descripción */
+        .about-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Misión y Visión */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .mission-box, .vision-box {
+            background: var(--bg-light);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+        }
+
+        .vision-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--accent-color), var(--primary-color));
+        }
+
+        .mission-box h3, .vision-box h3 {
+            font-size: 14px;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mission-box p, .vision-box p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* Valores */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .value-item {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 20px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .value-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 8px 8px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .value-item:hover::before {
+            opacity: 1;
+        }
+
+        .value-item .icon {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Servicios */
+        .services-intro {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .service-item {
+            margin-bottom: 35px;
+            page-break-inside: avoid;
+            padding: 28px;
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+            border-radius: 8px 0 0 8px;
+        }
+
+        .service-item:hover {
+            box-shadow: 0 4px 20px rgba(46, 204, 113, 0.1);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .service-icon {
+            font-size: 28px;
+            margin-right: 12px;
+            color: var(--primary-color);
+        }
+
+        .service-item h3 {
+            font-size: 18px;
+            color: var(--text-primary);
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .service-item .service-description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-style: italic;
+            padding-left: 40px;
+        }
+
+        .service-item ul {
+            margin-left: 40px;
+            list-style: none;
+        }
+
+        .service-item ul li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        .service-item ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .service-item ul ul {
+            margin-top: 8px;
+            margin-left: 20px;
+        }
+
+        .service-item ul ul li::before {
+            content: '◦';
+            font-size: 16px;
+        }
+
+        /* Contacto */
+        .contact-info {
+            background: var(--bg-light);
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .contact-item .label {
+            font-size: 11px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .contact-item .value {
+            font-size: 14px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Botón para imprimir */
+        .print-button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(46, 204, 113, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+            z-index: 1000;
+        }
+
+        .print-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        .print-button:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        .portfolio-footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-light);
+            font-size: 12px;
+        }
+
+        .portfolio-footer p {
+            margin-bottom: 6px;
+        }
+
+        .portfolio-footer .year {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .portfolio-footer .brand-name {
+            font-weight: 700;
+            color: #1a5f3a;
+        }
+
+        .portfolio-footer .highlight-ia {
+            color: var(--primary-color);
+        }
+
+        /* Divider decorativo */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 40px 0;
+        }
+
+        /* Responsive ajustes menores */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 40px;
+            }
+
+            .mission-vision,
+            .values-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de impresión -->
+    <button class="print-button no-print" onclick="window.print()">📄 Exportar a PDF</button>
+
+    <!-- Header -->
+    <header class="portfolio-header">
+        <h1>Anfib<span class="highlight-ia">ia</span></h1>
+        <p class="tagline">Conectamos tecnología y ambiente</p>
+    </header>
+
+    <!-- Sobre Nosotros -->
+    <section class="section">
+        <h2 class="section-title">Quiénes Somos</h2>
+        <div class="section-content">
+            <p class="about-text">
+                Trabajamos para conectar la tecnología y el software con el conocimiento ambiental. 
+                Somos una empresa innovadora que desarrolla soluciones digitales para abordar los 
+                desafíos más urgentes de nuestro planeta. Creamos tecnología que permite a organizaciones 
+                y comunidades tomar decisiones informadas para la conservación y gestión sostenible de 
+                los recursos naturales.
+            </p>
+        </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section class="section">
+        <h2 class="section-title">Misión y Visión</h2>
+        <div class="section-content">
+            <div class="mission-vision">
+                <div class="mission-box">
+                    <h3>Misión</h3>
+                    <p>Crear tecnología que permita a organizaciones y comunidades tomar decisiones 
+                    informadas para la conservación y gestión sostenible de los recursos naturales.</p>
+                </div>
+                
+                <div class="vision-box">
+                    <h3>Visión</h3>
+                    <p>Ser líderes en el desarrollo de software ambiental, contribuyendo a un mundo 
+                    donde la tecnología y la sostenibilidad trabajen en armonía.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section class="section">
+        <h2 class="section-title">Nuestros Valores</h2>
+        <div class="section-content">
+            <div class="values-grid">
+                <div class="value-item">
+                    <span class="icon">🌱</span>
+                    Sostenibilidad
+                </div>
+                <div class="value-item">
+                    <span class="icon">💡</span>
+                    Innovación
+                </div>
+                <div class="value-item">
+                    <span class="icon">🤝</span>
+                    Colaboración
+                </div>
+                <div class="value-item">
+                    <span class="icon">🛡️</span>
+                    Calidad
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Salto de página para servicios -->
+    <div class="page-break"></div>
+
+    <!-- Servicios -->
+    <section class="section">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="section-content">
+            <p class="services-intro">
+                Ofrecemos soluciones tecnológicas integrales diseñadas específicamente para enfrentar 
+                desafíos ambientales y promover la sostenibilidad empresarial.
+            </p>
+            
+            <!-- Servicio 1: IA -->
+            <div class="service-item">
+                <div class="service-header">
+                    <span class="service-icon">🧠</span>
+                    <h3>Inteligencia Artificial</h3>
+                </div>
+                <p class="service-description">Soluciones de IA especializadas para el análisis y monitoreo ambiental</p>
+                <ul>
+                    <li>Predecir variables ambientales</li>
+                    <li>Detección y reconocimiento de especies de animales, plantas u objetos</li>
+                    <li>Chatbot con información de interés ambiental</li>
+                    <li>Detección e identificación de sonidos</li>
+                    <li>Construcción y manejo de base de datos ambientales</li>
+                </ul>
+            </div>
+
+            <!-- Servicio 2: Green BI -->
+            <div class="service-item">
+                <div class="service-header">
+                    <span class="service-icon">📊</span>
+                    <h3>Green Business Intelligence</h3>
+                </div>
+                <p class="service-description">Environmental Social and Governance (ESG)</p>
+                <ul>
+                    <li>Life cycle assessments</li>
+                    <li>Medición y Visualización de datos verdes:
+                        <ul>
+                            <li>Consumo de energía</li>
+                            <li>Consumo de agua / aguas lluvias recolectadas</li>
+                            <li>Consumo de huella de carbono / Carbon accounting</li>
+                        </ul>
+                    </li>
+                    <li>Environmental product declaration</li>
+                </ul>
+            </div>
+
+            <!-- Servicio 3: SIG -->
+            <div class="service-item">
+                <div class="service-header">
+                    <span class="service-icon">🗺️</span>
+                    <h3>SIG y Software</h3>
+                </div>
+                <p class="service-description">Análisis espacial y desarrollo de herramientas geoespaciales</p>
+                <ul>
+                    <li>Análisis espacial</li>
+                    <li>Diseño de mapas personalizados para mostrar información ambiental</li>
+                    <li>Geovisores Personalizados</li>
+                </ul>
+            </div>
+
+            <!-- Servicio 4: Capacitaciones -->
+            <div class="service-item">
+                <div class="service-header">
+                    <span class="service-icon">🎓</span>
+                    <h3>Capacitaciones</h3>
+                </div>
+                <p class="service-description">Formación especializada en tecnologías ambientales y sostenibilidad</p>
+                <ul>
+                    <li>Capacitaciones en Sostenibilidad ambiental</li>
+                    <li>Capacitaciones en Machine Learning aplicado al medio ambiente y las ciencias naturales</li>
+                    <li>Capacitaciones en SIG</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Contacto -->
+    <section class="section">
+        <h2 class="section-title">Información de Contacto</h2>
+        <div class="section-content">
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <span class="label">Email</span>
+                        <span class="value">mhurtaddo2800@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="label">Teléfono</span>
+                        <span class="value">+57 3213387267</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="label">Ubicación</span>
+                        <span class="value">Bogotá, Colombia</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="portfolio-footer">
+        <p class="year">&copy; 2025 <span class="brand-name">Anfib<span class="highlight-ia">ia</span></span></p>
+        <p>Desarrollando soluciones digitales para abordar los desafíos más urgentes de nuestro planeta</p>
+    </footer>
+
+</body>
+</html>

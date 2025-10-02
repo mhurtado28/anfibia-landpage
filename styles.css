@@ -64,7 +64,17 @@ body {
 .nav-brand h2 {
     color: var(--dark-green);
     font-weight: 700;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+}
+
+.nav-logo {
+    height: 70px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05);
 }
 
 .nav-menu {
@@ -127,15 +137,9 @@ body {
     position: relative;
 }
 
-.highlight::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--green-bright);
-    border-radius: 2px;
+.highlight-ia {
+    color: var(--green-bright);
+    font-weight: 700;
 }
 
 .hero-subtitle {
@@ -143,6 +147,7 @@ body {
     color: var(--text-light);
     margin-bottom: 2.5rem;
     line-height: 1.6;
+    text-align: justify;
 }
 
 .hero-buttons {
@@ -199,41 +204,151 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.element {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.1;
-    animation: float 6s ease-in-out infinite;
+/* Red neuronal / Raíces */
+.neural-network {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 600px;
+    opacity: 0.6;
 }
 
-.element-1 {
-    width: 200px;
-    height: 200px;
-    background: var(--green-bright);
-    top: 20%;
-    right: 20%;
-    animation-delay: 0s;
+/* Árbol base - siempre visible en verde profesional */
+.branch-base {
+    fill: none;
+    stroke: #4ade80;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.5;
 }
 
-.element-2 {
-    width: 150px;
-    height: 150px;
-    background: var(--accent-blue);
-    top: 60%;
-    right: 40%;
-    animation-delay: 2s;
+/* Tronco más grueso */
+.branch-base.trunk {
+    stroke-width: 6;
+    opacity: 0.6;
 }
 
-.element-3 {
-    width: 100px;
-    height: 100px;
-    background: var(--light-green);
-    top: 40%;
-    right: 60%;
-    animation-delay: 4s;
+/* Ramas principales */
+.branch-base.main {
+    stroke-width: 4.5;
+    opacity: 0.55;
 }
+
+/* Flujo de energía - puntos brillantes que suben */
+.flow {
+    fill: none;
+    stroke: #10b981;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.8;
+    stroke-dasharray: 25 75;
+    stroke-dashoffset: 100;
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.9));
+    animation: flowUp 6s linear infinite;
+}
+
+.flow.trunk {
+    stroke-width: 5;
+    stroke-dasharray: 30 70;
+}
+
+.flow.main {
+    stroke-width: 4;
+    stroke-dasharray: 28 72;
+}
+
+/* Variaciones de grosor para simular raíces reales */
+.connection:nth-child(1),
+.connection:nth-child(5),
+.connection:nth-child(9) {
+    stroke-width: 4;
+}
+
+.connection:nth-child(2),
+.connection:nth-child(6),
+.connection:nth-child(10) {
+    stroke-width: 2.5;
+}
+
+.connection:nth-child(4),
+.connection:nth-child(14),
+.connection:nth-child(15) {
+    stroke-width: 2;
+}
+
+/* Delays del flujo */
+.flow:nth-child(1) { animation-delay: 0s; }
+.flow:nth-child(2) { animation-delay: 0.4s; }
+.flow:nth-child(3) { animation-delay: 0.8s; }
+.flow:nth-child(4) { animation-delay: 1.2s; }
+.flow:nth-child(5) { animation-delay: 1.6s; }
+.flow:nth-child(6) { animation-delay: 2s; }
+.flow:nth-child(7) { animation-delay: 2.4s; }
+.flow:nth-child(8) { animation-delay: 2.8s; }
+.flow:nth-child(9) { animation-delay: 3.2s; }
+.flow:nth-child(10) { animation-delay: 3.6s; }
+.flow:nth-child(11) { animation-delay: 4s; }
+.flow:nth-child(12) { animation-delay: 4.4s; }
+.flow:nth-child(13) { animation-delay: 4.8s; }
+
+/* Nodos profesionales y grandes - ESTÁTICOS */
+.node {
+    fill: #ffffff;
+    stroke: #10b981;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.5));
+    transition: filter 0.3s ease;
+}
+
+/* Nodo principal (base del tronco) */
+.node.primary {
+    fill: #10b981;
+    stroke: #059669;
+    stroke-width: 4;
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.8));
+}
+
+/* Nodo grande (centro del árbol) */
+.node.large {
+    stroke-width: 3.5;
+    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.7));
+}
+
+/* Nodos medianos */
+.node.medium {
+    stroke-width: 3;
+    filter: drop-shadow(0 0 7px rgba(16, 185, 129, 0.6));
+}
+
+/* Nodos pequeños */
+.node.small {
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.5));
+}
+
+/* Animación de flujo - sube por el árbol */
+@keyframes flowUp {
+    0% {
+        stroke-dashoffset: 100;
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+        filter: drop-shadow(0 0 12px rgba(16, 185, 129, 1));
+    }
+    100% {
+        stroke-dashoffset: 0;
+        opacity: 0.6;
+    }
+}
+
 
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -260,6 +375,17 @@ body {
     margin: 0 auto;
 }
 
+.services-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.services-logo:hover {
+    transform: scale(1.05);
+}
+
 /* Servicios */
 .services {
     padding: 100px 0;
@@ -268,7 +394,7 @@ body {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -326,6 +452,7 @@ body {
     color: var(--text-light);
     margin-bottom: 1.5rem;
     line-height: 1.6;
+    text-align: justify;
 }
 
 .service-card ul {
@@ -361,7 +488,7 @@ body {
 }
 
 .about-text h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: var(--text-dark);
     margin-bottom: 1.5rem;
@@ -372,6 +499,7 @@ body {
     color: var(--text-light);
     line-height: 1.7;
     margin-bottom: 2rem;
+    text-align: justify;
 }
 
 .mission-vision {
@@ -391,6 +519,7 @@ body {
 .mission p, .vision p {
     color: var(--text-dark);
     line-height: 1.6;
+    text-align: justify;
 }
 
 .values h3 {
@@ -425,31 +554,146 @@ body {
     color: var(--text-dark);
 }
 
-.eco-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+/* Ilustración ambiental interactiva */
+.eco-illustration {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.stat-item {
-    text-align: center;
-    padding: 2rem;
+.orbit-container {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+}
+
+.illustration-circle {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: var(--white);
-    border-radius: 16px;
-    border: 1px solid var(--border-light);
+    border: 3px solid var(--green-bright);
+    box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+    transition: all 0.4s ease;
+    cursor: pointer;
 }
 
-.stat-item h4 {
+
+.illustration-circle:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 40px rgba(46, 204, 113, 0.8), 
+                0 0 60px rgba(46, 204, 113, 0.6),
+                0 0 80px rgba(46, 204, 113, 0.4);
+    border-color: var(--light-green);
+    border-width: 4px;
+    background: rgba(255, 255, 255, 1);
+}
+
+.main-circle {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--green-bright), var(--light-green));
+    border: none;
+    animation: pulse 3s ease-in-out infinite;
+    z-index: 5;
+}
+
+.main-circle:hover {
+    transform: scale(1.15) rotate(10deg);
+    box-shadow: 0 0 50px rgba(46, 204, 113, 0.9),
+                0 0 80px rgba(46, 204, 113, 0.7),
+                0 0 120px rgba(46, 204, 113, 0.5);
+    background: linear-gradient(135deg, var(--light-green), var(--green-bright));
+}
+
+.main-circle i {
+    font-size: 4rem;
+    color: var(--white);
+    animation: leafRotate 4s ease-in-out infinite;
+}
+
+.small-circle {
+    width: 100px;
+    height: 100px;
+    animation: float 4s ease-in-out infinite, glow 2s ease-in-out infinite;
+}
+
+.small-circle i {
     font-size: 2.5rem;
-    font-weight: 700;
     color: var(--green-bright);
-    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
 }
 
-.stat-item p {
-    color: var(--text-light);
-    font-weight: 500;
+.small-circle:hover i {
+    color: var(--light-green);
+    transform: rotate(360deg);
+    filter: drop-shadow(0 0 8px var(--green-bright));
 }
+
+.circle-1 {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    bottom: 0;
+    right: 30px;
+    animation-delay: 1s;
+}
+
+.circle-3 {
+    bottom: 0;
+    left: 30px;
+    animation-delay: 2s;
+}
+
+
+/* Animaciones */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(46, 204, 113, 0.5);
+    }
+}
+
+@keyframes leafRotate {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+    }
+    50% {
+        box-shadow: 0 15px 40px rgba(46, 204, 113, 0.4);
+    }
+}
+
 
 /* Contacto */
 .contact {
@@ -568,13 +812,26 @@ body {
 
 .footer-brand h3 {
     color: var(--green-bright);
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     margin-bottom: 1rem;
+}
+
+.footer-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 1rem;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
 }
 
 .footer-brand p {
     color: var(--text-light);
     line-height: 1.6;
+    text-align: justify;
 }
 
 .footer-links {
@@ -637,8 +894,13 @@ body {
     .hero-visual {
         position: relative;
         width: 100%;
-        height: 200px;
+        height: 300px;
         margin-top: 2rem;
+    }
+    
+    .neural-network {
+        max-width: 400px;
+        max-height: 400px;
     }
     
     .about-content,
@@ -651,8 +913,41 @@ body {
         grid-template-columns: 1fr;
     }
     
-    .eco-stats {
-        grid-template-columns: 1fr;
+    .eco-illustration {
+        height: 300px;
+    }
+    
+    .orbit-container {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .main-circle {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .main-circle i {
+        font-size: 3rem;
+    }
+    
+    .small-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .small-circle i {
+        font-size: 2rem;
+    }
+    
+    .circle-2 {
+        bottom: 0;
+        right: 25px;
+    }
+    
+    .circle-3 {
+        bottom: 0;
+        left: 25px;
     }
     
     .values-grid {
