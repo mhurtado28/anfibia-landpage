@@ -110,17 +110,15 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    padding: 140px 20px 80px;
     background: linear-gradient(135deg, var(--alice-blue) 0%, var(--white) 100%);
-    padding: 120px 20px 80px;
     position: relative;
-    overflow: hidden;
 }
 
 .hero-content {
-    max-width: 600px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
     z-index: 2;
 }
 
@@ -147,7 +145,6 @@ body {
     color: var(--text-light);
     margin-bottom: 2.5rem;
     line-height: 1.6;
-    text-align: justify;
 }
 
 .hero-buttons {
@@ -190,165 +187,6 @@ body {
     color: var(--white);
     transform: translateY(-2px);
 }
-
-.hero-visual {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50%;
-    height: 100%;
-}
-
-.floating-elements {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Red neuronal / Raíces */
-.neural-network {
-    width: 100%;
-    height: 100%;
-    max-width: 600px;
-    max-height: 600px;
-    opacity: 0.6;
-}
-
-/* Árbol base - siempre visible en verde profesional */
-.branch-base {
-    fill: none;
-    stroke: #4ade80;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0.5;
-}
-
-/* Tronco más grueso */
-.branch-base.trunk {
-    stroke-width: 6;
-    opacity: 0.6;
-}
-
-/* Ramas principales */
-.branch-base.main {
-    stroke-width: 4.5;
-    opacity: 0.55;
-}
-
-/* Flujo de energía - puntos brillantes que suben */
-.flow {
-    fill: none;
-    stroke: #10b981;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0.8;
-    stroke-dasharray: 25 75;
-    stroke-dashoffset: 100;
-    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.9));
-    animation: flowUp 6s linear infinite;
-}
-
-.flow.trunk {
-    stroke-width: 5;
-    stroke-dasharray: 30 70;
-}
-
-.flow.main {
-    stroke-width: 4;
-    stroke-dasharray: 28 72;
-}
-
-/* Variaciones de grosor para simular raíces reales */
-.connection:nth-child(1),
-.connection:nth-child(5),
-.connection:nth-child(9) {
-    stroke-width: 4;
-}
-
-.connection:nth-child(2),
-.connection:nth-child(6),
-.connection:nth-child(10) {
-    stroke-width: 2.5;
-}
-
-.connection:nth-child(4),
-.connection:nth-child(14),
-.connection:nth-child(15) {
-    stroke-width: 2;
-}
-
-/* Delays del flujo */
-.flow:nth-child(1) { animation-delay: 0s; }
-.flow:nth-child(2) { animation-delay: 0.4s; }
-.flow:nth-child(3) { animation-delay: 0.8s; }
-.flow:nth-child(4) { animation-delay: 1.2s; }
-.flow:nth-child(5) { animation-delay: 1.6s; }
-.flow:nth-child(6) { animation-delay: 2s; }
-.flow:nth-child(7) { animation-delay: 2.4s; }
-.flow:nth-child(8) { animation-delay: 2.8s; }
-.flow:nth-child(9) { animation-delay: 3.2s; }
-.flow:nth-child(10) { animation-delay: 3.6s; }
-.flow:nth-child(11) { animation-delay: 4s; }
-.flow:nth-child(12) { animation-delay: 4.4s; }
-.flow:nth-child(13) { animation-delay: 4.8s; }
-
-/* Nodos profesionales y grandes - ESTÁTICOS */
-.node {
-    fill: #ffffff;
-    stroke: #10b981;
-    stroke-width: 3;
-    filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.5));
-    transition: filter 0.3s ease;
-}
-
-/* Nodo principal (base del tronco) */
-.node.primary {
-    fill: #10b981;
-    stroke: #059669;
-    stroke-width: 4;
-    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.8));
-}
-
-/* Nodo grande (centro del árbol) */
-.node.large {
-    stroke-width: 3.5;
-    filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.7));
-}
-
-/* Nodos medianos */
-.node.medium {
-    stroke-width: 3;
-    filter: drop-shadow(0 0 7px rgba(16, 185, 129, 0.6));
-}
-
-/* Nodos pequeños */
-.node.small {
-    stroke-width: 2.5;
-    filter: drop-shadow(0 0 5px rgba(16, 185, 129, 0.5));
-}
-
-/* Animación de flujo - sube por el árbol */
-@keyframes flowUp {
-    0% {
-        stroke-dashoffset: 100;
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 1;
-        filter: drop-shadow(0 0 12px rgba(16, 185, 129, 1));
-    }
-    100% {
-        stroke-dashoffset: 0;
-        opacity: 0.6;
-    }
-}
-
 
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -882,25 +720,11 @@ body {
     }
     
     .hero {
-        flex-direction: column;
-        text-align: center;
         padding: 100px 20px 60px;
     }
     
     .hero-title {
         font-size: 2.5rem;
-    }
-    
-    .hero-visual {
-        position: relative;
-        width: 100%;
-        height: 300px;
-        margin-top: 2rem;
-    }
-    
-    .neural-network {
-        max-width: 400px;
-        max-height: 400px;
     }
     
     .about-content,
