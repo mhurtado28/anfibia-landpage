@@ -173,7 +173,7 @@ El formulario incluye:
 ## 📞 Soporte
 
 Para personalizaciones o soporte técnico, contacta a:
-- **Email**: info@anfibia.com
+- **Email**: mhurtado2896@gmail.com
 - **Teléfono**: +54 11 1234-5678
 
 ## 📄 Licencia
